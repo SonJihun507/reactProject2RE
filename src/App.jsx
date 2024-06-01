@@ -4,19 +4,20 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import ExpenseProvider from "./contexts/ExpenseContext";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
     <>
-      <ExpenseProvider>
+      <Provider store={store}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
           </Routes>
         </BrowserRouter>
-      </ExpenseProvider>
+      </Provider>
     </>
   );
 }

@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import ExpenseList from "../components/ExpenseList";
 import CreateExpense from "../components/CreateExpense";
 import { ExpenseContext } from "../contexts/ExpenseContext";
+import { useSelector } from "react-redux";
 
 const Container = styled.main`
   max-width: 800px;
@@ -22,7 +23,9 @@ export const Section = styled.section`
 
 export default function Home() {
   const [month, setMonth] = useState(1);
-  const { expenses } = useContext(ExpenseContext);
+  const expenses = useSelector((state) => state.expenses);
+
+  console.log("expenses:", expenses);
 
   const filteredExpenses = expenses.filter(
     (expense) => expense.month === month
